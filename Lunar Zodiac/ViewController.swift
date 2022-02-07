@@ -8,12 +8,32 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var animalImageView: UIImageView!
+    
+    var currentImageNumber = 2
+    var currentYear = 2022
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        yearLabel.text = "\(currentYear)"
+        animalImageView.image = UIImage(named: "image\(currentImageNumber)")
     }
 
-
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        //currentImageNumber = currentImageNumber - 1
+        currentImageNumber += sender.tag
+        currentYear += sender.tag
+            if currentImageNumber < 0 {
+                currentImageNumber = 11
+            } else if currentImageNumber > 11 {
+                currentImageNumber = 0
+            }
+        
+            yearLabel.text = "\(currentYear)"
+            animalImageView.image = UIImage(named: "image\(currentImageNumber)")
+    }
+    
+    
 }
 
